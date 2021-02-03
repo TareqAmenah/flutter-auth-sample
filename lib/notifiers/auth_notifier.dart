@@ -9,7 +9,13 @@ class AuthNotifier extends ChangeNotifier {
   bool get isAuthenticated => userData != null;
 
   Future<void> checkPreSession() async {
-    userData = await FlutterSession().get('userData') as User;
+    await Future.delayed(Duration(seconds: 2));
+    try {
+      var userJsonData = await FlutterSession().get('userData') as Map<String, dynamic>;
+      userData = User.fromJson(userJsonData);
+    } catch (e) {
+      return;
+    }
   }
 
   Future<void> login(String email, String password) async {

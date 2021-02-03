@@ -299,6 +299,7 @@ class _AuthScreenState extends State<AuthScreen> {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
       } catch (error) {
         _showToast('Log in field, tray again');
+        print(error);
       } finally {
         setState(() {
           _isLoading = false;

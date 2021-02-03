@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../utils/constants.dart' as Constants;
+import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -46,6 +47,10 @@ class _SplashScreenState extends State<SplashScreen> {
     var _authNotifier = Provider.of<AuthNotifier>(context, listen: false);
     await _authNotifier.checkPreSession();
     if (_authNotifier.isAuthenticated) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
     } else {
       Navigator.pushReplacement(
         context,

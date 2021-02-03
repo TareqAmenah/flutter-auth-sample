@@ -10,4 +10,21 @@ class User {
     @required this.id,
     @required this.token,
   });
+
+  static User fromJson(Map<String, dynamic> data) {
+    print(data);
+    return User(
+      id: data["id"],
+      name: data["name"],
+      token: data["token"],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data["id"] = id;
+    data["name"] = this.name;
+    data["token"] = this.token;
+    return data;
+  }
 }
